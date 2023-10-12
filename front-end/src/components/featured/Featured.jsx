@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import "./featured.scss";
+import { getFeaturedMovie } from "../../services/Service";
+import { NavLink } from "react-router-dom";
 
 const Featured = ({ type }) => {
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    try {
+      getFeaturedMovie(type).then((res) => {
+        setContent(res.data[0]);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, [type]);
   return (
     <div className="featured">
       {type && (
         <div className="category">
-          <span>{type === "movies" ? "Movies" : "Series"}</span>
+          <span>{type === "movie" ? "Movies" : "Series"}</span>
           <select name="genre" id="">
             <option>Genre</option>
             <option value="adventure">Adventure</option>
@@ -27,24 +40,20 @@ const Featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img
-        width="100%"
-        src="https://lh3.googleusercontent.com/Ryg5ih-fOWbpEGDpbJYJz5RTq3_28Tvo2h3JQRCdiz16lw5ghitDMN6hcWA57g0d6_8VOqQYcCemRBOfZGQA64ZKkFOn71zuF1LDsXwCh4ywF-_z6VqxbBqmbQvK_-PWfZcztxDd1WDTEEUHX6GdP60"
-        alt=""
-      />
+      <img width="100%" src={content.img} alt="" />
       <div className="info">
-        <img src="https://i.imgur.com/QKsDxyn.jpg" alt="" />
-        <span className="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-          nostrum amet perferendis aliquid iusto ab consectetur enim, incidunt
-          voluptate voluptatum fugit consequuntur neque libero, dolores ad sint
-          nemo? Quisquam, sed.\
-        </span>
+        <img src={content.imgTitle} alt="" />
+        <span className="desc">{content.desc}</span>
         <div className="buttons">
-          <button className="play">
-            <PlayArrowIcon />
-            <span>Play</span>
-          </button>
+          <NavLink
+            to={{ pathname: "/watch", content: content }}
+            className="link"
+          >
+            <button className="play">
+              <PlayArrowIcon />
+              <span>Play</span>
+            </button>
+          </NavLink>
           <button className="more">
             <InfoOutlinedIcon />
             <span>More</span>

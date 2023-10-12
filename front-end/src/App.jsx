@@ -28,9 +28,9 @@ export default function App() {
         />
         {user && (
           <>
-            <Route exact path="/movies" element={<Home type="movies" />} />
-            <Route exact path="/series" element={<Home type="series" />} />
-            <Route exact path="/watch" element={<Watch />} />
+            <Route path="/movies" element={<Home type="movie" />} />
+            <Route path="/series" element={<Home type="series" />} />
+            <Route path="/watch" element={<Watch />} />
           </>
         )}
       </Routes>

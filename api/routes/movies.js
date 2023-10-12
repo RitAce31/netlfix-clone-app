@@ -80,7 +80,7 @@ router.get("/random", verify, async (req, res) => {
         { $sample: { size: 1 } },
       ]);
     }
-    res.status(500).json(movie);
+    res.status(200).json(movie);
   } catch (err) {
     res.status(500).json(err);
   }

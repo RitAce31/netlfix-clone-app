@@ -6,6 +6,7 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
+var cors = require("cors");
 
 dotenv.config();
 
@@ -20,6 +21,18 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+// use it before all route definitions
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000",
+      "http://localhost:4000",
+      "http://127.0.0.1:4000",
+    ],
+  })
+);
 
 app.use(express.json());
 app.use("/api/auth", authRoute);

@@ -4,46 +4,55 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import { getMovie } from "../../services/Service";
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
-const ListItem = ({ index }) => {
+const ListItem = ({ index, item }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const trailer =
-    "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
+  const [movie, setMovie] = useState({});
+
+  useEffect(() => {
+    try {
+      getMovie(item).then((res) => {
+        setMovie(res.data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    return () => console.log("Cleanup..");
+  }, [item]);
   return (
-    <div
-      className="listItem"
-      style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <img
-        src="https://www.animeexplained.com/wp-content/uploads/2023/01/one-piece-zoro-1278854-1280x0-1.jpeg"
-        alt=""
-      />
-      {isHovered && (
-        <>
-          <video src={trailer} autoPlay={true} loop />
-          <div className="itemInfo">
-            <div className="icons">
-              <PlayArrowIcon className="icon" />
-              <AddIcon className="icon" />
-              <ThumbUpOutlinedIcon className="icon" />
-              <ThumbDownOutlinedIcon className="icon" />
+    <NavLink to={{ pathname: "/watch", movie: movie }}>
+      <div
+        className="listItem"
+        style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <img src={movie.img} alt="" />
+        {isHovered && (
+          <>
+            <video src={movie.trailer} autoPlay={true} loop />
+            <div className="itemInfo">
+              <div className="icons">
+                <PlayArrowIcon className="icon" />
+                <AddIcon className="icon" />
+                <ThumbUpOutlinedIcon className="icon" />
+                <ThumbDownOutlinedIcon className="icon" />
+              </div>
+              <div className="itemInfoTop">
+                <span>{movie.duration}</span>
+                <span className="limit">{movie.limit}</span>
+                <span>{movie.year}</span>
+              </div>
+              <div className="desc">{movie.desc}</div>
+              <div className="genre">{movie.genre}</div>
             </div>
-            <div className="itemInfoTop">
-              <span>1 hour 44 min</span>
-              <span className="limit">16+</span>
-              <span>1999</span>
-            </div>
-            <div className="desc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloremque molestias unde eos autem placeat nam
-            </div>
-            <div className="genre">Action</div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </NavLink>
   );
 };
 
