@@ -23,7 +23,7 @@ const ListItem = ({ index, item }) => {
     return () => console.log("Cleanup..");
   }, [item]);
   return (
-    <NavLink to={{ pathname: "/watch", movie: movie }}>
+    <NavLink to={{ pathname: "/watch" }} state={movie}>
       <div
         className="listItem"
         style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
