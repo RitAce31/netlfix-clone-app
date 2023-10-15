@@ -3,11 +3,19 @@ import "./navbar.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../redux/slices/loginSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const onLogoutPress = () => {
+    localStorage.removeItem("user");
+    dispatch(changeUser(null));
+    Navigate("/login");
+  };
   window.onscroll = () => {
     setIsScrolled(window.scrollY === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -45,7 +53,7 @@ const Navbar = () => {
               <ArrowDropDownIcon className="icon" />
               <div className="options">
                 <span>Settings</span>
-                <span>Logout</span>
+                <span onClick={onLogoutPress}>Logout</span>
               </div>
             </div>
           </div>

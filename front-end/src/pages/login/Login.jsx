@@ -1,6 +1,29 @@
+import { useState } from "react";
 import "./login.scss";
+import { loginUser } from "../../services/Service";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../redux/slices/loginSlice";
 
 export default function Login() {
+  const performAction = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const onLoginClick = (e) => {
+    e.preventDefault();
+    loginUser(email, password)
+      .then((res) => {
+        if (res.status === 200) {
+          performAction(changeUser(res.data));
+          localStorage.setItem("user", res.data);
+          navigate("/");
+        }
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="login">
       <div className="top">
@@ -15,9 +38,21 @@ export default function Login() {
       <div className="container">
         <form>
           <h1>Sign In</h1>
-          <input type="email" placeholder="Email or phone number" />
-          <input type="password" placeholder="Password" />
-          <button className="loginButton">Sign In</button>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="loginButton" onClick={onLoginClick}>
+            Sign In
+          </button>
           <span>
             New to Netflix? <b>Sign up now.</b>
           </span>

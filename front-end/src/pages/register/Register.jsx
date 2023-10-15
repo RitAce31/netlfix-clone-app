@@ -1,17 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./register.scss";
+import { register } from "../../services/Service";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
-  const onFirstButtonClick = () => {
-    setEmail(emailRef.current.value);
-  };
-  const onSecondButtonClick = (e) => {
-    setPassword(passwordRef.current.value);
+  const [username, setUsername] = useState("");
+  const Navigate = useNavigate();
+  const handleClick = () => {
+    register(username, email, password)
+      .then((d) => {
+        console.log(d.data);
+        if (d.status == 201) {
+          alert("Registered success by ritesh bhangi...");
+          Navigate("/login");
+        } else {
+          alert("Problem occured during register process.");
+        }
+      })
+      .catch((ex) => {
+        console.log(ex);
+        //alert("Problem occured during register process.");
+      });
+    //RegsiterUser({ username, email, password }, dispatch);
   };
   return (
     <div className="register">
@@ -31,25 +42,33 @@ const Register = () => {
             Ready to watch? Enter your email to create or restart your
             membership.
           </p>
-          {!email ? (
-            <div className="input">
-              <input type="email" placeholder="Email address" ref={emailRef} />
-              <button className="registerButton" onClick={onFirstButtonClick}>
-                Get Started
-              </button>
-            </div>
-          ) : (
-            <div className="input">
-              <input
-                type="text"
-                placeholder="Enter password"
-                ref={passwordRef}
-              />
-              <button className="registerButton" onClick={onSecondButtonClick}>
-                Start
-              </button>
-            </div>
-          )}
+          <div className="input">
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <button className="registerButton">Get Started</button>
+          </div>
+          <div className="input">
+            <input
+              type="email"
+              placeholder="Email address"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <button className="registerButton">Get Started</button>
+          </div>
+          <div className="input">
+            <input
+              type="text"
+              placeholder="Enter password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="registerButton" onClick={handleClick}>
+              Start
+            </button>
+          </div>
         </div>
       </div>
     </div>

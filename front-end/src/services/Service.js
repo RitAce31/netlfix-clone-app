@@ -36,3 +36,22 @@ export const getFeaturedMovie = (type) => {
     },
   });
 };
+
+export const register = (username, email, password) => {
+  let obj = {
+    username: username,
+    email: email,
+    password: password,
+  };
+  let apiUrl = url + "/auth/register";
+  return axios.post(apiUrl, obj);
+};
+
+export const loginUser = (email, password) => {
+  let obj = {
+    email: email,
+    password: password,
+  };
+  let apiUrl = url + "/auth/login";
+  return axios.post(apiUrl, obj);
+};
