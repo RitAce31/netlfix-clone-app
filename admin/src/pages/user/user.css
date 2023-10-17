@@ -152,3 +152,9 @@
     color: white;
     font-weight: 600;
 }
+
+.userUpdateItem > select {
+  padding: 10px;
+}
+
+

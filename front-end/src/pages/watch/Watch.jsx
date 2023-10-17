@@ -7,7 +7,6 @@ export default function Watch(props) {
   const location = useLocation();
   const [movie, setMovie] = useState([]);
   useEffect(() => {
-    console.log(location.state);
     setMovie(location.state);
   }, []);
   return (

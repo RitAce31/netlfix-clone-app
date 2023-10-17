@@ -45,10 +45,7 @@ const Featured = ({ type }) => {
         <img src={content.imgTitle} alt="" />
         <span className="desc">{content.desc}</span>
         <div className="buttons">
-          <NavLink
-            to={{ pathname: "/watch", content: content }}
-            className="link"
-          >
+          <NavLink to={{ pathname: "/watch" }} state={content} className="link">
             <button className="play">
               <PlayArrowIcon />
               <span>Play</span>

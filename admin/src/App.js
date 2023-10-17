@@ -10,7 +10,7 @@ import Login from "./pages/login/Login";
 import Movie from "./pages/movie/Movie";
 import { useSelector } from "react-redux";
 import MovieList from "./pages/movieList/MoviesList";
-import NewMovie from "./pages/newProduct/NewMovie";
+import NewMovie from "./pages/newMovie/NewMovie";
 
 function App() {
   const loginData = useSelector((state) => state.login);
