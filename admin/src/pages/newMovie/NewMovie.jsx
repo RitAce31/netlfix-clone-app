@@ -1,5 +1,5 @@
 import "./newMovie.css";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import storage from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { addMovie } from "../../services/Services";
@@ -62,7 +62,9 @@ export default function NewMovie() {
     console.log("actual data", movie);
     addMovie(movie)
       .then((res) => {
-        console.log("response", res);
+        if (res.status === 200) {
+          alert("Movie has been added succesfully");
+        }
       })
       .catch((err) => console.log(err));
   };

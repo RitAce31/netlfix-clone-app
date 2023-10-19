@@ -5,14 +5,18 @@ import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { deleteUser, getNewUser } from "../../services/Services";
+import { useDispatch } from "react-redux";
+import { changeUser } from "../../redux/slices/loginSlice";
+
 export default function UserList() {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   const onDeleteUser = (id) => {
     deleteUser(id)
       .then((res) => {
         if (res.status === 200) {
-          alert("User has been deleted");
+          alert("User has been deleted succesfully!");
         }
       })
       .catch((err) => console.log(err));
@@ -25,7 +29,7 @@ export default function UserList() {
         }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [data]);
   const columns = [
     { field: "_id", headerName: "ID", width: 90 },
     {
@@ -44,7 +48,7 @@ export default function UserList() {
     { field: "email", headerName: "Email", width: 200 },
     {
       field: "isAdmin",
-      headerName: "Status",
+      headerName: "isAdmin",
       width: 120,
     },
     {

@@ -27,10 +27,28 @@ export const getNewUser = () => {
     },
   });
 };
-
+//DELETE USER
 export const deleteUser = (id) => {
   let apiUrl = url + "/users/" + id;
   return axios.delete(apiUrl, {
+    headers: {
+      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+    },
+  });
+};
+//ADD NEW USER
+export const addUser = (newUser) => {
+  let apiUrl = url + "/users/";
+  return axios.post(apiUrl, newUser, {
+    headers: {
+      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+    },
+  });
+};
+//UPDATE USER
+export const updateUser = (id, updatedUser) => {
+  let apiUrl = url + "/users/" + id;
+  return axios.put(apiUrl, updatedUser, {
     headers: {
       token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
     },
@@ -71,6 +89,26 @@ export const addMovie = (movie) => {
 export const updateMovie = (id, updatedMovie) => {
   let apiUrl = url + "/movies/" + id;
   return axios.put(apiUrl, updatedMovie, {
+    headers: {
+      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+    },
+  });
+};
+
+//GET LISTS
+export const getList = () => {
+  let apiUrl = url + "/lists";
+  return axios.get(apiUrl, {
+    headers: {
+      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+    },
+  });
+};
+
+//DELETE MOVIE
+export const deleteList = (id) => {
+  let apiUrl = url + "/lists/" + id;
+  return axios.delete(apiUrl, {
     headers: {
       token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
     },

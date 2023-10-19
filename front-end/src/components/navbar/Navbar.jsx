@@ -4,12 +4,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeUser } from "../../redux/slices/loginSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+  const data = useSelector((state) => state.login);
   const [isScrolled, setIsScrolled] = useState(false);
   const onLogoutPress = () => {
     localStorage.removeItem("user");
@@ -45,10 +46,7 @@ const Navbar = () => {
             <SearchIcon className="icon" />
             <span>KID</span>
             <NotificationsIcon className="icon" />
-            <img
-              src="https://i.pinimg.com/474x/33/b7/45/33b7457105d6c4c0e108ae368c2f37ff.jpg"
-              alt=""
-            />
+            <img src={data.user.info.profilePic} alt="" />
             <div className="profile">
               <ArrowDropDownIcon className="icon" />
               <div className="options">

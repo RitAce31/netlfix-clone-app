@@ -47,20 +47,24 @@ export default function Sidebar() {
                 Users
               </li>
             </NavLink>
+            <NavLink to="/newUser" className="link">
+              <li className="sidebarListItem">
+                <PermIdentity className="sidebarIcon" />
+                Add new user
+              </li>
+            </NavLink>
             <NavLink to="/movies" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
                 Movies
               </li>
             </NavLink>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
-            <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
+            <NavLink to="/newmovie" className="link">
+              <li className="sidebarListItem">
+                <Storefront className="sidebarIcon" />
+                Add new Movie
+              </li>
+            </NavLink>
           </ul>
         </div>
         <div className="sidebarMenu">

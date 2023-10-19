@@ -21,6 +21,8 @@ export default function Login() {
           localStorage.setItem("user", JSON.stringify(res.data));
           navigate("/");
           alert("Logged in succesfully");
+        } else {
+          alert("username or password worng!");
         }
         console.log(res.data);
       })

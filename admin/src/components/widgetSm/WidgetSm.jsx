@@ -10,7 +10,6 @@ export default function WidgetSm() {
     try {
       getNewUser().then((res) => {
         setNewUsers(res.data);
-        console.log(res.data);
       });
     } catch (err) {
       console.log(err);

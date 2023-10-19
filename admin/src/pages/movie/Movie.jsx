@@ -65,7 +65,9 @@ export default function Movie() {
     e.preventDefault();
     updateMovie(movie._id, updatedMovie)
       .then((res) => {
-        console.log(res);
+        if (res.status === 200) {
+          alert("Movie has been updated!");
+        }
       })
       .catch((err) => console.log(err));
   };

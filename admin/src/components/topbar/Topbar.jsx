@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeUser } from "../../redux/slices/loginSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function Topbar() {
-  const dispatch = useDispatch();
   const Navigate = useNavigate();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.login);
+
   const onClickLogOut = () => {
     dispatch(changeUser(null));
     localStorage.removeItem("user");
@@ -17,7 +19,7 @@ export default function Topbar() {
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">lamaadmin</span>
+          <span className="logo">ritaceadmin</span>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
@@ -32,11 +34,7 @@ export default function Topbar() {
             <Settings />
           </div>
           <div className="topbarIconContainer">
-            <img
-              src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="topAvatar"
-            />
+            <img src={data.user.info.profilePic} alt="" className="topAvatar" />
           </div>
           <div className="topbarIconContainer">
             <button className="button" onClick={onClickLogOut}>
