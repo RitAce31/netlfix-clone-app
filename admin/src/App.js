@@ -11,6 +11,8 @@ import Movie from "./pages/movie/Movie";
 import { useSelector } from "react-redux";
 import MovieList from "./pages/movieList/MoviesList";
 import NewMovie from "./pages/newMovie/NewMovie";
+import Lists from "./pages/Lists/Lists";
+import NewList from "./pages/newList/NewList";
 import List from "./pages/List/List";
 
 function App() {
@@ -38,7 +40,9 @@ function App() {
           <Route path="/movies" element={<MovieList />} />
           <Route path="/movies/:movieId" element={<Movie />} />
           <Route path="/newmovie" element={<NewMovie />} />
-          <Route path="/lists" element={<List />} />
+          <Route path="/lists" element={<Lists />} />
+          <Route path="/newList" element={<NewList />} />
+          <Route path="/lists/:listId" element={<List />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -5,7 +5,6 @@ import Featured from "../../components/featured/Featured";
 import List from "../../components/list/List";
 import { useState } from "react";
 import { getList } from "../../services/Service";
-import { useLocation } from "react-router-dom";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);

@@ -31,6 +31,7 @@ export default function App() {
           <>
             <Route path="/movies" element={<Home type="movie" />} />
             <Route path="/series" element={<Home type="series" />} />
+            <Route path="/anime" element={<Home type="anime" />} />
             <Route path="/watch" element={<Watch />} />
           </>
         )}

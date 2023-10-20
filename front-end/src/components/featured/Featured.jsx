@@ -11,17 +11,26 @@ const Featured = ({ type }) => {
   useEffect(() => {
     try {
       getFeaturedMovie(type).then((res) => {
-        setContent(res.data[0]);
+        if (res.status === 200) {
+          setContent(res.data[0]);
+        }
       });
     } catch (err) {
       console.log(err);
     }
   }, [type]);
+
+  console.log(content);
+
   return (
     <div className="featured">
       {type && (
         <div className="category">
-          <span>{type === "movie" ? "Movies" : "Series"}</span>
+          <span>
+            {type === "movie" && "Movies"}
+            {type === "series" && "Series"}
+            {type === "anime" && "Anime"}
+          </span>
           <select name="genre" id="">
             <option>Genre</option>
             <option value="adventure">Adventure</option>

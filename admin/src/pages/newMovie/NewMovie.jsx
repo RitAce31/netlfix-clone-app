@@ -68,6 +68,7 @@ export default function NewMovie() {
       })
       .catch((err) => console.log(err));
   };
+  console.log(movie);
   return (
     <div className="newMovie">
       <h1 className="addMovieTitle">New Movie</h1>

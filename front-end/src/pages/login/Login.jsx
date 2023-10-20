@@ -24,7 +24,6 @@ export default function Login() {
         } else {
           alert("username or password worng!");
         }
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -58,8 +57,8 @@ export default function Login() {
             Sign In
           </button>
           <span>
-            New to Netflix?{" "}
-            <NavLink className="link" exact to="register">
+            New to Netflix?
+            <NavLink className="link" to="/register">
               <b>Sign up now.</b>
             </NavLink>
           </span>

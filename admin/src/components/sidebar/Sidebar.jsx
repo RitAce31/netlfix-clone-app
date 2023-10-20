@@ -39,7 +39,7 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Quick Menu</h3>
+          <h3 className="sidebarTitle">User Menu</h3>
           <ul className="sidebarList">
             <NavLink to="/users" className="link">
               <li className="sidebarListItem">
@@ -53,6 +53,11 @@ export default function Sidebar() {
                 Add new user
               </li>
             </NavLink>
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <h3 className="sidebarTitle">Movie Menu</h3>
+          <ul className="sidebarList">
             <NavLink to="/movies" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
@@ -68,37 +73,20 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Notifications</h3>
+          <h3 className="sidebarTitle">List Menu</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon" />
-              Mail
-            </li>
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedback
-            </li>
-            <li className="sidebarListItem">
-              <ChatBubbleOutline className="sidebarIcon" />
-              Messages
-            </li>
-          </ul>
-        </div>
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Staff</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <WorkOutline className="sidebarIcon" />
-              Manage
-            </li>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
-              <Report className="sidebarIcon" />
-              Reports
-            </li>
+            <NavLink to="/lists" className="link">
+              <li className="sidebarListItem">
+                <Storefront className="sidebarIcon" />
+                Lists
+              </li>
+            </NavLink>
+            <NavLink to="/newList" className="link">
+              <li className="sidebarListItem">
+                <Storefront className="sidebarIcon" />
+                Add new list
+              </li>
+            </NavLink>
           </ul>
         </div>
       </div>

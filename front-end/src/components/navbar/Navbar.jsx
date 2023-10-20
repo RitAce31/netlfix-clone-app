@@ -12,6 +12,8 @@ const Navbar = () => {
   const Navigate = useNavigate();
   const data = useSelector((state) => state.login);
   const [isScrolled, setIsScrolled] = useState(false);
+  console.log(data);
+
   const onLogoutPress = () => {
     localStorage.removeItem("user");
     dispatch(changeUser(null));
@@ -39,8 +41,9 @@ const Navbar = () => {
             <NavLink to="/movies" className="link">
               <span>Movies</span>
             </NavLink>
-            <span>New and Popular</span>
-            <span>My List</span>
+            <NavLink to="/anime" className="link">
+              <span>Anime</span>
+            </NavLink>
           </div>
           <div className="right">
             <SearchIcon className="icon" />

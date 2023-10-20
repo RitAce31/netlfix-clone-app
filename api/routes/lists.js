@@ -8,7 +8,7 @@ router.post("/", verify, async (req, res) => {
     const newList = new List(req.body);
     try {
       const list = await newList.save();
-      res.status(201).json(list);
+      res.status(200).json(list);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -21,8 +21,8 @@ router.post("/", verify, async (req, res) => {
 router.delete("/:id", verify, async (req, res) => {
   if (req.user.isAdmin) {
     try {
-      await List.findById(req.params.id);
-      res.status(201).json("The list has been deleted!");
+      await List.findByIdAndDelete(req.params.id);
+      res.status(200).json("The list has been deleted!");
     } catch (err) {
       res.status(500).json(err);
     }
@@ -57,4 +57,35 @@ router.get("/", verify, async (req, res) => {
   }
 });
 
+router.put("/:id", verify, async (req, res) => {
+  if (req.user.isAdmin) {
+    try {
+      const updatedList = await List.findByIdAndUpdate(
+        req.params.id,
+        { $set: req.body },
+        { new: true }
+      );
+      res.status(200).json(updatedList);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(403).json("Only admin can add a movie");
+  }
+});
 module.exports = router;
+
+//GET ALL LISTS
+
+router.get("/all", verify, async (req, res) => {
+  if (req.user.isAdmin) {
+    try {
+      const lists = await List.find();
+      res.status(200).json(lists.reverse());
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(403).json("Only admin can access all user account");
+  }
+});

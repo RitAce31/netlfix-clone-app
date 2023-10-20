@@ -26,6 +26,7 @@ export const getMovie = (item) => {
 };
 
 export const getFeaturedMovie = (type) => {
+  console.log(type);
   let apiUrl = url + "/movies/random/" + "?type=" + type;
   return axios.get(apiUrl, {
     headers: {
@@ -34,14 +35,9 @@ export const getFeaturedMovie = (type) => {
   });
 };
 
-export const register = (username, email, password) => {
-  let obj = {
-    username: username,
-    email: email,
-    password: password,
-  };
+export const register = (user) => {
   let apiUrl = url + "/auth/register";
-  return axios.post(apiUrl, obj);
+  return axios.post(apiUrl, user);
 };
 
 export const loginUser = (email, password) => {

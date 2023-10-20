@@ -30,7 +30,7 @@ const ListItem = ({ index, item }) => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={movie.img} alt="" />
+        <img src={movie.imgSm} alt="" />
         {isHovered && (
           <>
             <video src={movie.trailer} autoPlay={true} loop />

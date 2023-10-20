@@ -97,7 +97,7 @@ export const updateMovie = (id, updatedMovie) => {
 
 //GET LISTS
 export const getList = () => {
-  let apiUrl = url + "/lists";
+  let apiUrl = url + "/lists/all";
   return axios.get(apiUrl, {
     headers: {
       token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
@@ -105,10 +105,30 @@ export const getList = () => {
   });
 };
 
-//DELETE MOVIE
+//DELETE LIST
 export const deleteList = (id) => {
   let apiUrl = url + "/lists/" + id;
   return axios.delete(apiUrl, {
+    headers: {
+      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+    },
+  });
+};
+
+//ADD LIST
+export const addList = (list) => {
+  let apiUrl = url + "/lists/";
+  return axios.post(apiUrl, list, {
+    headers: {
+      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+    },
+  });
+};
+
+//UPDATE LISTS
+export const updateList = (id, updatedList) => {
+  let apiUrl = url + "/lists/" + id;
+  return axios.put(apiUrl, updatedList, {
     headers: {
       token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
     },
