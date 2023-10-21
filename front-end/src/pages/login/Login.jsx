@@ -21,8 +21,11 @@ export default function Login() {
           localStorage.setItem("user", JSON.stringify(res.data));
           navigate("/");
           alert("Logged in succesfully");
+        } else if (res.status === 201) {
+          alert(res.data);
+          console.log(res);
         } else {
-          alert("username or password worng!");
+          alert("Username or password wrong!");
         }
       })
       .catch((err) => console.log(err));

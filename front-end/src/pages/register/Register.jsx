@@ -22,6 +22,7 @@ const Register = () => {
           Navigate("/login");
         } else {
           alert("Problem occured during register process.");
+          console.log(d.data);
         }
       })
       .catch((ex) => {
