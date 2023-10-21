@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = "http://localhost:8800/api";
+let url = "https://netflix-clone-app-gfn8.onrender.com/api";
 export const getList = (type, genre) => {
   let apiUrl = url + "/lists";
   if (type && type !== "") {
