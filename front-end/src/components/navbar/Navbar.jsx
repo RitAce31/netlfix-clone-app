@@ -33,22 +33,22 @@ const Navbar = () => {
               alt=""
             />
             <NavLink to="/" className="link">
-              <span>Home</span>
+              <span className="navbarmainLinks">Home</span>
             </NavLink>
             <NavLink to="/series" className="link">
-              <span>Series</span>
+              <span className="navbarmainLinks">Series</span>
             </NavLink>
             <NavLink to="/movies" className="link">
-              <span>Movies</span>
+              <span className="navbarmainLinks">Movies</span>
             </NavLink>
             <NavLink to="/anime" className="link">
-              <span>Anime</span>
+              <span className="navbarmainLinks">Anime</span>
             </NavLink>
           </div>
           <div className="right">
-            <SearchIcon className="icon" />
-            <span>KID</span>
-            <NotificationsIcon className="icon" />
+            <SearchIcon className="icon navbarmainIcons" />
+            <span className="navbarmainIcons">KID</span>
+            <NotificationsIcon className="icon navbarmainIcons" />
             <img src={data.user.info.profilePic} alt="" />
             <div className="profile">
               <ArrowDropDownIcon className="icon" />

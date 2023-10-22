@@ -48,6 +48,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://netflix-clone-app-gfn8.onrender.com/api/"
+  }, "proxy": "https://netflix-clone-app-gfn8.onrender.com/api/"
 }
+

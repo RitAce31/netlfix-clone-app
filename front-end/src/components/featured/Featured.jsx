@@ -5,7 +5,7 @@ import "./featured.scss";
 import { getFeaturedMovie } from "../../services/Service";
 import { NavLink } from "react-router-dom";
 
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
 
   useEffect(() => {
@@ -20,8 +20,6 @@ const Featured = ({ type }) => {
     }
   }, [type]);
 
-  console.log(content);
-
   return (
     <div className="featured">
       {type && (
@@ -31,7 +29,7 @@ const Featured = ({ type }) => {
             {type === "series" && "Series"}
             {type === "anime" && "Anime"}
           </span>
-          <select name="genre" id="">
+          <select name="genre" id="" onChange={(e) => setGenre(e.target.value)}>
             <option>Genre</option>
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
@@ -49,7 +47,7 @@ const Featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img width="100%" src={content.img} alt="" />
+      <img width="100%" className="img" src={content.img} alt="" />
       <div className="info">
         <img src={content.imgTitle} alt="" />
         <span className="desc">{content.desc}</span>
