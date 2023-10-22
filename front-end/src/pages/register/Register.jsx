@@ -84,117 +84,110 @@ const Register = () => {
             alt=""
             className="logo"
           />
+
           <button
             className="loginButton"
             onClick={() => {
               Navigate("/login");
+              console.log("Clicked");
             }}
           >
             Sign in
           </button>
         </div>
-        <div className="container">
-          <h1>Unlimited movies, TV shows, and more.</h1>
-          <h2>Watch anywhere. Cancel anytime.</h2>
-          <p>
-            Ready to watch? Enter your email to create or restart your
-            membership.
-          </p>
-          <div className="input ">
-            <div
-              className="arrowleft"
-              onClick={() => {
-                if (uploaded > 0) {
-                  setUploaded(uploaded - 1);
-                }
-              }}
-            >
-              <ArrowBackIosNewIcon />
-            </div>
-            {uploaded == 0 ? (
-              <>
-                <input
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                  value={user.username}
-                  onChange={onChangeUser}
-                  required
-                />
-                <button
-                  className="registerButton"
-                  onClick={() => setUploaded(1)}
-                >
-                  Enter
-                </button>
-              </>
-            ) : uploaded == 1 ? (
-              <>
-                <input
-                  type="email"
-                  name="email"
-                  value={user.email}
-                  placeholder="Email address"
-                  onChange={onChangeUser}
-                  required
-                />
-                <button
-                  className="registerButton"
-                  onClick={() => setUploaded(2)}
-                >
-                  Enter
-                </button>
-              </>
-            ) : uploaded == 2 ? (
-              <>
-                <input
-                  type="text"
-                  placeholder="Enter password"
-                  value={user.password}
-                  name="password"
-                  onChange={onChangeUser}
-                  required
-                />
-                <button
-                  className="registerButton"
-                  onClick={() => setUploaded(3)}
-                >
-                  Enter
-                </button>
-              </>
-            ) : uploaded == 3 ? (
-              <>
-                <input
-                  type="file"
-                  name="profilePic"
-                  accept=".jpg, .jpeg, .png"
-                  onChange={(e) => setProfilePic(e.target.files[0])}
-                  required
-                />
-                {isUploaded ? (
-                  <button className="registerButton" onClick={onSubmitClick}>
-                    Get Started
-                  </button>
-                ) : (
-                  <button className="registerButton" onClick={onUploadClick}>
-                    Upload
-                  </button>
-                )}
-              </>
-            ) : null}
-            <div
-              className="arrowright"
-              onClick={() => {
-                if (uploaded < 3) {
-                  setUploaded(uploaded + 1);
-                  console.log(uploaded);
-                }
-              }}
-            >
-              <ArrowForwardIosIcon />
-            </div>
+      </div>
+      <div className="container">
+        <h1>Unlimited movies, TV shows, and more.</h1>
+        <h2>Watch anywhere. Cancel anytime.</h2>
+        <p>
+          Ready to watch? Enter your email to create or restart your membership.
+        </p>
+        <div className="input">
+          <div
+            className="arrowleft"
+            onClick={() => {
+              if (uploaded > 0) {
+                setUploaded(uploaded - 1);
+              }
+            }}
+          >
+            <ArrowBackIosNewIcon />
           </div>
-          {/* {uploaded === 0 && (
+          {uploaded == 0 ? (
+            <>
+              <input
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={user.username}
+                onChange={onChangeUser}
+                required
+              />
+              <button className="registerButton" onClick={() => setUploaded(1)}>
+                Enter
+              </button>
+            </>
+          ) : uploaded == 1 ? (
+            <>
+              <input
+                type="email"
+                name="email"
+                value={user.email}
+                placeholder="Email address"
+                onChange={onChangeUser}
+                required
+              />
+              <button className="registerButton" onClick={() => setUploaded(2)}>
+                Enter
+              </button>
+            </>
+          ) : uploaded == 2 ? (
+            <>
+              <input
+                type="text"
+                placeholder="Enter password"
+                value={user.password}
+                name="password"
+                onChange={onChangeUser}
+                required
+              />
+              <button className="registerButton" onClick={() => setUploaded(3)}>
+                Enter
+              </button>
+            </>
+          ) : uploaded == 3 ? (
+            <>
+              <input
+                type="file"
+                name="profilePic"
+                accept=".jpg, .jpeg, .png"
+                onChange={(e) => setProfilePic(e.target.files[0])}
+                required
+              />
+              {isUploaded ? (
+                <button className="registerButton" onClick={onSubmitClick}>
+                  Get Started
+                </button>
+              ) : (
+                <button className="registerButton" onClick={onUploadClick}>
+                  Upload
+                </button>
+              )}
+            </>
+          ) : null}
+          <div
+            className="arrowright"
+            onClick={() => {
+              if (uploaded < 3) {
+                setUploaded(uploaded + 1);
+                console.log(uploaded);
+              }
+            }}
+          >
+            <ArrowForwardIosIcon />
+          </div>
+        </div>
+        {/* {uploaded === 0 && (
             <div className="input">
               <input
                 type="text"
@@ -208,7 +201,7 @@ const Register = () => {
               </button>
             </div>
           )} */}
-          {/* {uploaded === 1 && (
+        {/* {uploaded === 1 && (
             <div className="input">
               <input
                 type="email"
@@ -222,7 +215,7 @@ const Register = () => {
               </button>
             </div>
           )} */}
-          {/* {uploaded === 2 && (
+        {/* {uploaded === 2 && (
             <div className="input">
               <input
                 type="text"
@@ -236,7 +229,7 @@ const Register = () => {
               </button>
             </div>
           )} */}
-          {/* {uploaded === 3 && (
+        {/* {uploaded === 3 && (
             <div className="input">
               <input
                 type="file"
@@ -256,7 +249,6 @@ const Register = () => {
               )}
             </div>
           )} */}
-        </div>
       </div>
     </div>
   );
