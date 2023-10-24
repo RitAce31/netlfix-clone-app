@@ -1,4 +1,9 @@
+@import "../../app.scss";
+
 .home{
     background-color: var(--main-color);
     overflow: hidden;
+    min-height: 100vh;
+    
+
 }

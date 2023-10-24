@@ -48,7 +48,7 @@
       margin-top: 100px;
 
       @include mobile {
-        width: 70vw;
+        width: 60vw;
       }
 
       @include tablet {
@@ -70,7 +70,7 @@
       }
 
       @include mobile {
-        width: 78vw;
+        width: 75vw;
         margin: 20px 0px;
         text-align: justify;
         text-justify: inter-word;
