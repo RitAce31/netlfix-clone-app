@@ -22,7 +22,8 @@ export default function Login() {
           Navigate("/");
           alert("Logged in succesfully");
         } else {
-          alert("email address or password wrong!");
+          console.log(res);
+          alert(res.data);
         }
       })
       .catch((err) => console.log(err));

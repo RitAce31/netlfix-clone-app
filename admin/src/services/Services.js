@@ -8,7 +8,7 @@ export const loginUser = (email, password) => {
     email: email,
     password: password,
   };
-  let apiUrl = url + "/auth/login";
+  let apiUrl = url + "/users/adminlogin";
   return axios.post(apiUrl, user);
 };
 
