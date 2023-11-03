@@ -28,8 +28,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://127.0.0.1:3000",
-      "https://ritace.netlify.app",
-      "https://ritaceadmin.netlify.app",
+      "https://portfolioflix.netlify.app",
       "http://localhost:4000",
       "http://127.0.0.1:4000",
     ],
