@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "https://netflix-clone-app-gfn8.onrender.com";
+const url = "";
 
 //LOGIN API
 export const loginUser = (email, password) => {
